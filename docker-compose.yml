@@ -31,7 +31,7 @@ services:
         tty: true
         command: sh -c "npm run start:dev"
         volumes:
-            - .:/trarepo-api
-            - /trarepo-api/node_modules
+            - .:/home/trarepo-api
+            - /home/trarepo-api/node_modules
         networks:
             - trarepo-development-network
