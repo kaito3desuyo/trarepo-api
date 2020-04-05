@@ -1,5 +1,9 @@
 FROM node:lts as development
 
+RUN mkdir -p /home/trarepo-api && chown node:node /home/trarepo-api
+
+USER node
+
 WORKDIR /home/trarepo-api
 
 COPY . /home/trarepo-api
