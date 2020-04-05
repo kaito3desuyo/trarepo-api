@@ -1,0 +1,39 @@
+version: '3.7'
+
+volumes:
+  db-data:
+networks:
+  development-network:
+
+services:
+  db:
+    build:
+      context: ./db
+    container_name: trarepo-db
+    ports:
+      - '5432:5432'
+    tty: true
+    volumes:
+      - ./db/init:/docker-entrypoint-initdb.d
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - development-network
+    environment:
+      POSTGRES_USER: trarepo_admin
+      POSTGRES_PASSWORD: trarepo106090
+      POSTGRES_INITDB_ARGS: '--encoding=UTF-8 --locale=C'
+
+  api:
+    build:
+      context: .
+      target: development
+    container_name: trarepo-api
+    ports:
+      - '3000:3000'
+    tty: true
+    command: sh -c "npm run start:dev"
+    volumes:
+      - .:/trarepo-api
+      - /trarepo-api/node_modules
+    networks:
+      - development-network
