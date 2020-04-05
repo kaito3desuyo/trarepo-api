@@ -34,3 +34,5 @@ services:
             - /home/trarepo-api/node_modules
         networks:
             - development-network
+        environment:
+            DATABASE_URL: postgresql://postgres:trarepo106090@development-db/trarepo_development
