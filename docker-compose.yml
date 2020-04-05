@@ -1,9 +1,9 @@
 version: '3.7'
 
 volumes:
-    trarepo-development-db-data:
+    development-db-data:
 networks:
-    trarepo-development-network:
+    development-network:
 
 services:
     development-db:
@@ -13,10 +13,9 @@ services:
             - '5432:5432'
         tty: true
         volumes:
-            - ./db/init:/docker-entrypoint-initdb.d
-            - trarepo-development-db-data:/var/lib/postgresql/data
+            - development-db-data:/var/lib/postgresql/data
         networks:
-            - trarepo-development-network
+            - development-network
         environment:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: trarepo106090
@@ -34,4 +33,4 @@ services:
             - .:/home/trarepo-api
             - /home/trarepo-api/node_modules
         networks:
-            - trarepo-development-network
+            - development-network
