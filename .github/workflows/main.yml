@@ -3,11 +3,11 @@ name: Trarepo API Test CI
 on: [push]
 
 jobs:
-    build:
+    test:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v1
+            - uses: actions/checkout@v2
             - name: Build Container
               run: docker-compose -f docker-compose.test.yml build
             - name: Execute Test
