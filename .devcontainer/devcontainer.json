@@ -1,0 +1,16 @@
+{
+    "name": "trarepo-api",
+    "dockerComposeFile": ["../docker-compose.yml"],
+    "service": "development-api",
+    "workspaceFolder": "/home/trarepo-api",
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+
+    "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ashinzekene.nestjs"
+    ],
+    "shutdownAction": "stopCompose"
+}
