@@ -8,12 +8,14 @@ async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
     const swaggerOptions = new DocumentBuilder()
+        .addServer(process.env.BASE_URI ?? '/')
         .setTitle('Trarepo API')
         .setDescription('全国公共交通機関データベース')
+        .setVersion('v1')
         .build();
 
-    const swagger = SwaggerModule.createDocument(app, swaggerOptions);
-    SwaggerModule.setup('doc', app, swagger);
+    const swagger = SwaggerModule.createDocument(app, swaggerOptions, {});
+    SwaggerModule.setup('doc/v1', app, swagger);
 
     app.useGlobalPipes(customValidationPipe);
 
