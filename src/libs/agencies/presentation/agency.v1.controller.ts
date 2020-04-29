@@ -10,10 +10,10 @@ import {
     UseInterceptors,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateAgencyDto } from '../usecase/dto/create-agency.dto';
+import { CreateAgencyDto } from '../usecase/dtos/create-agency.dto';
 import { AgencyService } from '../usecase/agency.service';
 import { FindAgencyByIdParam } from '../usecase/params/find-agency-by-id.param';
-import { UpdateAgencyDto } from '../usecase/dto/update-agency.dto';
+import { UpdateAgencyDto } from '../usecase/dtos/update-agency.dto';
 import { UpdateAgencyParam } from '../usecase/params/update-agency.param';
 import { RemoveAgencyParam } from '../usecase/params/remove-agency.param';
 import { FindManyAgencyQueryParam } from '../usecase/params/find-many-agency.query-param';

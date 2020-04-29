@@ -1,7 +1,7 @@
 import { InjectRepository } from '@nestjs/typeorm';
 import { paginate, Pagination } from 'nestjs-typeorm-paginate';
 import { Repository } from 'typeorm';
-import { AgencyDetailsDto } from '../../usecase/dto/agency-details.dto';
+import { AgencyDetailsDto } from '../../usecase/dtos/agency-details.dto';
 import { IAgencyQuery } from '../../usecase/queries/agency-query.interface';
 import { AgencyDtoBuilder } from '../builders/agency-dto.builder';
 import { AgencyModel } from '../models/agency.model';

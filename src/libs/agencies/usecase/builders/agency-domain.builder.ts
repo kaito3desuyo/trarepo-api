@@ -1,4 +1,4 @@
-import { BaseAgencyDto } from '../dto/base-agency.dto';
+import { BaseAgencyDto } from '../dtos/base-agency.dto';
 import { Agency } from '../../domain/agency';
 import { AgencyId } from '../../domain/agency-id';
 import { UniqueEntityID } from '../../../../core/classes/unique-entity-id';

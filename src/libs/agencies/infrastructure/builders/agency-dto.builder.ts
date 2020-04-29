@@ -1,5 +1,5 @@
 import { AgencyModel } from './../../infrastructure/models/agency.model';
-import { AgencyDetailsDto } from './../../usecase/dto/agency-details.dto';
+import { AgencyDetailsDto } from '../../usecase/dtos/agency-details.dto';
 
 export class AgencyDtoBuilder implements AgencyModel {
     id: string;

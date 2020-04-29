@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { AgencyModel } from '../models/agency.model';
 import { Repository } from 'typeorm';
 import { Agency } from '../../domain/agency';
-import { AgencyDetailsDto } from '../../usecase/dto/agency-details.dto';
+import { AgencyDetailsDto } from '../../usecase/dtos/agency-details.dto';
 import { isArray } from 'lodash';
 import { AgencyModelBuilder } from '../builders/agency-model.builder';
 import { AgencyDtoBuilder } from '../builders/agency-dto.builder';
