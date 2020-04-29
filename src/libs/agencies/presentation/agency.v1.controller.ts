@@ -13,6 +13,7 @@ import { AgencyService } from '../usecase/agency.service';
 import { FindAgencyByIdParam } from '../usecase/params/find-agency-by-id.param';
 import { UpdateAgencyDto } from '../usecase/dto/update-agency.dto';
 import { UpdateAgencyParam } from '../usecase/params/update-agency.param';
+import { RemoveAgencyParam } from '../usecase/params/remove-agency.param';
 
 @Controller()
 @ApiTags('agencies')
@@ -43,7 +44,7 @@ export class AgencyV1Controller {
     }
 
     @Delete(':agencyId')
-    deleteAgency() {
-        return 'kamo';
+    deleteAgency(@Param() params: RemoveAgencyParam) {
+        return this.agencyService.remove(params);
     }
 }

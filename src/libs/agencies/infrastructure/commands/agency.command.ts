@@ -28,4 +28,17 @@ export class AgencyCommand implements IAgencyCommand {
         const result = await this.repository.save(models);
         return result.map((o) => new AgencyDtoBuilder(o).build());
     }
+
+    async remove(agency: Agency | Agency[]): Promise<AgencyDetailsDto[]> {
+        const data = isArray(agency) ? agency : [agency];
+
+        const models = data.map((o) => {
+            const builder = new AgencyModelBuilder();
+            o.notify(builder);
+            return builder.build();
+        });
+
+        const result = await this.repository.remove(models);
+        return result.map((o) => new AgencyDtoBuilder(o).build());
+    }
 }
