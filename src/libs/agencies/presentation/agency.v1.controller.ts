@@ -10,12 +10,12 @@ export class AgencyV1Controller {
 
     @Get()
     getAgencies() {
-        return 'hoge';
+        return this.agencyService.findAll();
     }
 
     @Post()
     postAgency(@Body() body: CreateAgencyDto) {
-        return this.agencyService.createAgency(body);
+        return this.agencyService.add(body);
     }
 
     @Put(':agencyId')
