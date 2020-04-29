@@ -6,6 +6,8 @@ import {
     Delete,
     Body,
     Param,
+    Query,
+    UseInterceptors,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CreateAgencyDto } from '../usecase/dto/create-agency.dto';
@@ -14,6 +16,8 @@ import { FindAgencyByIdParam } from '../usecase/params/find-agency-by-id.param';
 import { UpdateAgencyDto } from '../usecase/dto/update-agency.dto';
 import { UpdateAgencyParam } from '../usecase/params/update-agency.param';
 import { RemoveAgencyParam } from '../usecase/params/remove-agency.param';
+import { FindManyAgencyQueryParam } from '../usecase/params/find-many-agency.query-param';
+import { PaginationInterceptor } from '../../../core/interceptors/pagination.interceptor';
 
 @Controller()
 @ApiTags('agencies')
@@ -21,8 +25,9 @@ export class AgencyV1Controller {
     constructor(private readonly agencyService: AgencyService) {}
 
     @Get()
-    getAgencies() {
-        return this.agencyService.findAll();
+    @UseInterceptors(PaginationInterceptor)
+    getAgencies(@Query() queries: FindManyAgencyQueryParam) {
+        return this.agencyService.findMany(queries);
     }
 
     @Get(':agencyId')

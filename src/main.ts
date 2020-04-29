@@ -3,9 +3,13 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { customValidationPipe } from './core/pipes/custom-validation.pipe';
+import { NestExpressApplication } from '@nestjs/platform-express';
+import helmet from 'helmet';
 
 async function bootstrap() {
-    const app = await NestFactory.create(AppModule);
+    const app = await NestFactory.create<NestExpressApplication>(AppModule);
+    app.use(helmet());
+    app.enableCors();
 
     const swaggerOptions = new DocumentBuilder()
         .addServer(process.env.BASE_URI ?? '/')

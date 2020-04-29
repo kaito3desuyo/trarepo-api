@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { Pagination } from 'nestjs-typeorm-paginate';
 import { AgencyCommand } from '../infrastructure/commands/agency.command';
 import { AgencyQuery } from '../infrastructure/queries/agency.query';
 import { AgencyDomainBuilder } from './builders/agency-domain.builder';
@@ -8,6 +9,7 @@ import { UpdateAgencyDto } from './dto/update-agency.dto';
 import { FindAgencyByIdParam } from './params/find-agency-by-id.param';
 import { RemoveAgencyParam } from './params/remove-agency.param';
 import { UpdateAgencyParam } from './params/update-agency.param';
+import { FindManyAgencyQueryParam } from './params/find-many-agency.query-param';
 
 @Injectable()
 export class AgencyService {
@@ -18,6 +20,15 @@ export class AgencyService {
 
     async findAll(): Promise<AgencyDetailsDto[]> {
         return this.agencyQuery.findAll();
+    }
+
+    async findMany(
+        params: FindManyAgencyQueryParam,
+    ): Promise<Pagination<AgencyDetailsDto>> {
+        return this.agencyQuery.findMany({
+            pageIndex: params.page,
+            pageSize: params.per,
+        });
     }
 
     async findById(params: FindAgencyByIdParam): Promise<AgencyDetailsDto> {
