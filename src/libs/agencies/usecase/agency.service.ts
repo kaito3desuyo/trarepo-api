@@ -16,6 +16,10 @@ export class AgencyService {
         return this.agencyQuery.findAll();
     }
 
+    async findById(id: string): Promise<AgencyDetailsDto> {
+        return this.agencyQuery.findById(id);
+    }
+
     async add(dto: CreateAgencyDto): Promise<AgencyDetailsDto> {
         const domain = new AgencyDomainBuilder(dto).build();
         const result = await this.agencyCommand.save(domain);

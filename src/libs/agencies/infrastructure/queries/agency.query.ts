@@ -15,4 +15,18 @@ export class AgencyQuery implements IAgencyQuery {
         const result = await this.repository.find();
         return result.map((o) => new AgencyDtoBuilder(o).build());
     }
+
+    async findById(id: string): Promise<AgencyDetailsDto> {
+        const result = await this.repository.findOne({
+            where: {
+                id,
+            },
+        });
+
+        if (!result) {
+            return null;
+        }
+
+        return new AgencyDtoBuilder(result).build();
+    }
 }
