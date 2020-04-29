@@ -11,7 +11,13 @@ export class Agency extends AggregateRoot<IAgencyProps> {
         return new Agency(props, id);
     }
 
-    public notify(agency: IAgencyNotification) {
-        agency.agencyId = this.props.agencyId;
+    public notify(notifier: IAgencyNotification) {
+        notifier.agencyId = this.props.agencyId;
+        notifier.agencyNumber = this.props.agencyNumber;
+        notifier.agencyOfficialName = this.props.agencyOfficialName;
+        notifier.agencyName = this.props.agencyName;
+        notifier.agencyPhone = this.props.agencyPhone;
+        notifier.agencyUrl = this.props.agencyUrl;
+        notifier.agencyFareUrl = this.props.agencyFareUrl;
     }
 }

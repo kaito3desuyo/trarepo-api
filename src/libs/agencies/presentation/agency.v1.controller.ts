@@ -15,7 +15,7 @@ export class AgencyV1Controller {
 
     @Post()
     postAgency(@Body() body: CreateAgencyDto) {
-        return this.agencyService.addAgency(body);
+        return this.agencyService.createAgency(body);
     }
 
     @Put(':agencyId')

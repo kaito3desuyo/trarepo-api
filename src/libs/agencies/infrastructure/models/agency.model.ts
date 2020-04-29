@@ -33,9 +33,9 @@ export class AgencyModel {
     @Column()
     agencyFareUrl: string;
 
-    @CreateDateColumn({ precision: 3 })
+    @CreateDateColumn({ type: 'timestamptz', precision: 3 })
     createdAt: Date;
 
-    @UpdateDateColumn({ precision: 3 })
+    @UpdateDateColumn({ type: 'timestamptz', precision: 3 })
     updatedAt: Date;
 }

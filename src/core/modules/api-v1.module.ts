@@ -4,8 +4,13 @@ import { Routes, RouterModule } from 'nest-router';
 
 const routes: Routes = [
     {
-        path: '/agencies',
-        module: AgencyV1Module,
+        path: '/v1',
+        children: [
+            {
+                path: '/agencies',
+                module: AgencyV1Module,
+            },
+        ],
     },
 ];
 
