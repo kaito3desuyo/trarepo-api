@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { AgencyCommand } from '../infrastructure/commands/agency.command';
 import { AgencyQuery } from '../infrastructure/queries/agency.query';
 import { AgencyDomainBuilder } from './builders/agency-domain.builder';
@@ -21,7 +21,13 @@ export class AgencyService {
     }
 
     async findById(params: FindAgencyByIdParam): Promise<AgencyDetailsDto> {
-        return this.agencyQuery.findById(params.agencyId);
+        const result = await this.agencyQuery.findById(params.agencyId);
+
+        if (!result) {
+            throw new NotFoundException('Agency not found.');
+        }
+
+        return result;
     }
 
     async add(dto: CreateAgencyDto): Promise<AgencyDetailsDto> {
@@ -35,6 +41,11 @@ export class AgencyService {
         dto: UpdateAgencyDto,
     ): Promise<AgencyDetailsDto> {
         const target = await this.agencyQuery.findById(params.agencyId);
+
+        if (!target) {
+            throw new NotFoundException('Agency not found.');
+        }
+
         const domain = new AgencyDomainBuilder({
             ...target,
             ...dto,
@@ -45,6 +56,11 @@ export class AgencyService {
 
     async remove(params: RemoveAgencyParam): Promise<AgencyDetailsDto> {
         const target = await this.agencyQuery.findById(params.agencyId);
+
+        if (!target) {
+            throw new NotFoundException('Agency not found.');
+        }
+
         const domain = new AgencyDomainBuilder(target).build();
         const result = await this.agencyCommand.remove(domain);
         return result[0];
