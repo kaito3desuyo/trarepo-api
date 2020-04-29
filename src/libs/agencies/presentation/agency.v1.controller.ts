@@ -10,7 +10,9 @@ import {
 import { ApiTags } from '@nestjs/swagger';
 import { CreateAgencyDto } from '../usecase/dto/create-agency.dto';
 import { AgencyService } from '../usecase/agency.service';
-import { FindByIdParam } from '../usecase/params/find-by-id.param';
+import { FindAgencyByIdParam } from '../usecase/params/find-agency-by-id.param';
+import { UpdateAgencyDto } from '../usecase/dto/update-agency.dto';
+import { UpdateAgencyParam } from '../usecase/params/update-agency.param';
 
 @Controller()
 @ApiTags('agencies')
@@ -23,8 +25,8 @@ export class AgencyV1Controller {
     }
 
     @Get(':agencyId')
-    getAgencyById(@Param() params: FindByIdParam) {
-        return this.agencyService.findById(params.agencyId);
+    getAgencyById(@Param() params: FindAgencyByIdParam) {
+        return this.agencyService.findById(params);
     }
 
     @Post()
@@ -33,8 +35,11 @@ export class AgencyV1Controller {
     }
 
     @Put(':agencyId')
-    putAgency() {
-        return 'moke';
+    putAgency(
+        @Param() params: UpdateAgencyParam,
+        @Body() body: UpdateAgencyDto,
+    ) {
+        return this.agencyService.update(params, body);
     }
 
     @Delete(':agencyId')
