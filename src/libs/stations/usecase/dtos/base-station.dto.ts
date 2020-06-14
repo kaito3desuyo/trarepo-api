@@ -1,9 +1,9 @@
 export class BaseStationDto {
     stationId: string;
     stationName: string;
-    stationSubName: string;
+    stationSubName?: string;
     stationType: number;
-    stationDescription: string;
-    stationLatLng: string;
-    stationUrl: string;
+    stationDescription?: string;
+    stationLatLng?: string;
+    stationUrl?: string;
 }

@@ -17,23 +17,23 @@ export class StationModel {
     stationName: string;
 
     @Column('varchar', { nullable: true })
-    stationSubName: string;
+    stationSubName?: string;
 
     @Column('smallint')
     stationType: number;
 
     @Column('text', { nullable: true })
-    stationDescription: string;
+    stationDescription?: string;
 
     @Column('geometry', {
         spatialFeatureType: 'Point',
         srid: 4326,
         nullable: true,
     })
-    stationLatLng: string;
+    stationLatLng?: string;
 
     @Column('varchar', { nullable: true })
-    stationUrl: string;
+    stationUrl?: string;
 
     // wheelchair_boarding
 
