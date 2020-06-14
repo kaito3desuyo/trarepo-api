@@ -30,7 +30,10 @@ export class StationModel {
         srid: 4326,
         nullable: true,
     })
-    stationLatLng?: string;
+    stationLatLng?: {
+        type: string;
+        coordinates: number[];
+    };
 
     @Column('varchar', { nullable: true })
     stationUrl?: string;

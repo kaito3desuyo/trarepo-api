@@ -6,7 +6,10 @@ export interface IStationProps {
     stationSubName: string;
     stationType: number;
     stationDescription: string;
-    stationLatLng: string;
+    stationLatLng: {
+        latitude: number;
+        longitude: number;
+    };
     stationUrl: string;
 }
 
@@ -16,6 +19,9 @@ export interface IStationNotification {
     stationSubName: string;
     stationType: number;
     stationDescription: string;
-    stationLatLng: string;
+    stationLatLng: {
+        latitude: number;
+        longitude: number;
+    };
     stationUrl: string;
 }
