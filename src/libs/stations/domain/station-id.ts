@@ -1,7 +1,7 @@
 import { Entity } from '@src/core/classes/entity';
 import { UniqueEntityID } from '@src/core/classes/unique-entity-id';
 
-export class AgencyId extends Entity<void> {
+export class StationId extends Entity<void> {
     get id(): UniqueEntityID {
         return this._id;
     }
@@ -11,6 +11,6 @@ export class AgencyId extends Entity<void> {
     }
 
     static create(id?: UniqueEntityID) {
-        return new AgencyId(id);
+        return new StationId(id);
     }
 }
