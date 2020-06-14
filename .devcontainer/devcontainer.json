@@ -10,7 +10,9 @@
     "extensions": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "ashinzekene.nestjs"
+        "ashinzekene.nestjs",
+        "mhutchie.git-graph",
+        "christian-kohler.path-intellisense"
     ],
     "shutdownAction": "stopCompose"
 }

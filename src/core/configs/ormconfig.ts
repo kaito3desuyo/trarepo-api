@@ -1,5 +1,6 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { join } from 'path';
+import { TypeOrmNamingStrategy } from './typeorm-naming-strategy';
 
 const ORM_CONFIG: TypeOrmModuleOptions = {
     type: 'postgres',
@@ -20,6 +21,7 @@ const ORM_CONFIG: TypeOrmModuleOptions = {
     cli: {
         migrationsDir: join('db', 'migrations'),
     },
+    namingStrategy: new TypeOrmNamingStrategy(),
 };
 
 export = ORM_CONFIG;

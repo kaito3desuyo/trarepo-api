@@ -6,23 +6,23 @@ networks:
     testing-network:
 
 services:
-    # testing-db:
-    #    build:
-    #        context: ./db
-    #    tty: true
-    #    networks:
-    #        - testing-network
-    #    environment:
-    #       POSTGRES_USER: postgres
-    #        POSTGRES_PASSWORD: trarepo106090
-    #        POSTGRES_INITDB_ARGS: '--encoding=UTF-8 --locale=C'
+    testing-db:
+        build:
+            context: ./db
+        tty: true
+        networks:
+            - testing-network
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: trarepo106090
+            POSTGRES_INITDB_ARGS: '--encoding=UTF-8 --locale=C'
 
     testing-api:
         build:
             context: .
             target: development
         tty: true
-        command: sh -c "npm run test"
+        command: sh -c "sh /home/trarepo-api/db/wait.sh && npm run test"
         networks:
             - testing-network
         environment:
