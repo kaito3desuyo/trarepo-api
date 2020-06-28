@@ -7,7 +7,7 @@ export class StationDtoBuilder implements StationModel {
     stationSubName?: string;
     stationType: number;
     stationDescription?: string;
-    stationLatLng?: { type: string; coordinates: number[] };
+    stationLatLng?: { type: string; coordinates: string[] };
     stationUrl?: string;
     createdAt: Date;
     updatedAt: Date;
@@ -28,14 +28,15 @@ export class StationDtoBuilder implements StationModel {
         return {
             stationId: this.id,
             stationName: this.stationName,
-            stationSubName: this.stationSubName,
+            stationSubName: this.stationSubName ?? null,
             stationType: this.stationType,
-            stationDescription: this.stationDescription,
-            stationLatLng:
-                this.stationLatLng.coordinates[1] +
-                ',' +
-                this.stationLatLng.coordinates[0],
-            stationUrl: this.stationUrl,
+            stationDescription: this.stationDescription ?? null,
+            stationLatLng: this.stationLatLng
+                ? this.stationLatLng.coordinates[1] +
+                  ',' +
+                  this.stationLatLng.coordinates[0]
+                : null,
+            stationUrl: this.stationUrl ?? null,
         };
     }
 }

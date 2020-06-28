@@ -9,8 +9,8 @@ export class StationModelBuilder implements IStationNotification {
     private _stationType: number;
     private _stationDescription: string;
     private _stationLatLng: {
-        latitude: number;
-        longitude: number;
+        latitude: string;
+        longitude: string;
     };
     private _stationUrl: string;
 
@@ -34,7 +34,7 @@ export class StationModelBuilder implements IStationNotification {
         this._stationDescription = stationDescription;
     }
 
-    set stationLatLng(stationLatLng: { latitude: number; longitude: number }) {
+    set stationLatLng(stationLatLng: { latitude: string; longitude: string }) {
         this._stationLatLng = stationLatLng;
     }
 
@@ -46,17 +46,19 @@ export class StationModelBuilder implements IStationNotification {
         const model = new StationModel();
         model.id = this._stationId.id.toString();
         model.stationName = this._stationName;
-        model.stationSubName = this._stationSubName;
+        model.stationSubName = this._stationSubName ?? null;
         model.stationType = this._stationType;
-        model.stationDescription = this._stationDescription;
-        model.stationLatLng = {
-            type: 'Point',
-            coordinates: [
-                this._stationLatLng.longitude,
-                this._stationLatLng.latitude,
-            ],
-        };
-        model.stationUrl = this._stationUrl;
+        model.stationDescription = this._stationDescription ?? null;
+        model.stationLatLng = this._stationLatLng
+            ? {
+                  type: 'Point',
+                  coordinates: [
+                      this._stationLatLng.longitude,
+                      this._stationLatLng.latitude,
+                  ],
+              }
+            : null;
+        model.stationUrl = this._stationUrl ?? null;
         return model;
     }
 }

@@ -7,8 +7,8 @@ export interface IStationProps {
     stationType: number;
     stationDescription: string;
     stationLatLng: {
-        latitude: number;
-        longitude: number;
+        latitude: string;
+        longitude: string;
     };
     stationUrl: string;
 }
@@ -20,8 +20,8 @@ export interface IStationNotification {
     stationType: number;
     stationDescription: string;
     stationLatLng: {
-        latitude: number;
-        longitude: number;
+        latitude: string;
+        longitude: string;
     };
     stationUrl: string;
 }

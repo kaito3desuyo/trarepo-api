@@ -25,7 +25,7 @@ export class StationV1Controller {
                 stationDescription: 'jhoge',
                 stationLatLng: {
                     type: 'Point',
-                    coordinates: [135, 35],
+                    coordinates: ['135', '35'],
                 },
                 stationUrl: 'http',
             },

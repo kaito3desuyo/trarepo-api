@@ -32,7 +32,7 @@ export class StationModel {
     })
     stationLatLng?: {
         type: string;
-        coordinates: number[];
+        coordinates: string[];
     };
 
     @Column('varchar', { nullable: true })
