@@ -4,5 +4,9 @@ export const customValidationPipe = new ValidationPipe({
     transform: true,
     whitelist: true,
     forbidUnknownValues: true,
-    exceptionFactory: e => new UnprocessableEntityException(e),
+    validationError: {
+        target: false,
+        value: false,
+    },
+    exceptionFactory: (e) => new UnprocessableEntityException(e),
 });
