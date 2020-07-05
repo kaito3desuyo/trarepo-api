@@ -6,6 +6,9 @@ import {
     Param,
     Put,
     UnprocessableEntityException,
+    Delete,
+    HttpCode,
+    HttpStatus,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CreateStationDto } from '../usecase/dtos/create-station.dto';
@@ -13,6 +16,7 @@ import { StationService } from '../usecase/station.service';
 import { GetStationByIdParam } from './params/get-station-by-id.param';
 import { PutStationParam } from './params/put-station.param';
 import { UpdateStationDto } from '../usecase/dtos/update-station.dto';
+import { DeleteStationParam } from './params/delete-station.param';
 
 @Controller()
 @ApiTags('stations')
@@ -46,5 +50,11 @@ export class StationV1Controller {
         }
 
         return this.stationService.update(body);
+    }
+
+    @Delete('/:stationId')
+    @HttpCode(HttpStatus.NO_CONTENT)
+    deleteStation(@Param() params: DeleteStationParam) {
+        return this.stationService.remove(params.stationId);
     }
 }

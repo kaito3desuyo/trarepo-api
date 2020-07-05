@@ -29,7 +29,16 @@ export class StationCommand implements IStationCommand {
         return result.map((o) => new StationDtoBuilder(o).build());
     }
 
-    remove(station: Station | Station[]): Promise<StationDetailsDto[]> {
-        throw new Error('Method not implemented.');
+    async remove(station: Station | Station[]): Promise<StationDetailsDto[]> {
+        const data = isArray(station) ? station : [station];
+
+        const models = data.map((o) => {
+            const builder = new StationModelBuilder();
+            o.notify(builder);
+            return builder.build();
+        });
+
+        const result = await this.repository.remove(models);
+        return result.map((o) => new StationDtoBuilder(o).build());
     }
 }

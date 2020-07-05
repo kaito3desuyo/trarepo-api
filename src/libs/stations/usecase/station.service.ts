@@ -43,4 +43,15 @@ export class StationService {
         const result = await this.stationCommand.save(domain);
         return result[0];
     }
+
+    async remove(id: string): Promise<void> {
+        const current = await this.stationQuery.findOne(id);
+
+        if (!current) {
+            throw new UnprocessableEntityException('Station not found.');
+        }
+
+        const domain = new StationDomainBuilder(current).build();
+        await this.stationCommand.remove(domain);
+    }
 }
