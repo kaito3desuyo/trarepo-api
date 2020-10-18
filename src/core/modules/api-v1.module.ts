@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AgencyV1Module } from '../../libs/agencies/agency.v1.module';
 import { Routes, RouterModule } from 'nest-router';
+import { StationV1Module } from '@src/libs/stations/station.v1.module';
 
 const routes: Routes = [
     {
@@ -10,12 +11,17 @@ const routes: Routes = [
                 path: '/agencies',
                 module: AgencyV1Module,
             },
+
+            {
+                path: '/stations',
+                module: StationV1Module,
+            },
         ],
     },
 ];
 
 @Module({
-    imports: [RouterModule.forRoutes(routes), AgencyV1Module],
+    imports: [RouterModule.forRoutes(routes), AgencyV1Module, StationV1Module],
     exports: [RouterModule],
 })
 export class ApiV1Module {}
