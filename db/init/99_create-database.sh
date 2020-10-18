@@ -10,6 +10,14 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "trarepo_developmen
     CREATE EXTENSION postgis;
 EOSQL
 
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "trarepo_development" <<-EOSQL
+    CREATE EXTENSION pgcrypto;
+EOSQL
+
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "trarepo_test" <<-EOSQL
     CREATE EXTENSION postgis;
+EOSQL
+
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "trarepo_test" <<-EOSQL
+    CREATE EXTENSION pgcrypto;
 EOSQL

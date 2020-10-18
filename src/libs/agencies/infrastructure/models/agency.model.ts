@@ -1,10 +1,12 @@
+import { RouteModel } from '@src/libs/routes/infrastructure/models/route.model';
 import {
-    Entity,
-    PrimaryGeneratedColumn,
     Column,
     CreateDateColumn,
-    UpdateDateColumn,
+    Entity,
     Index,
+    OneToMany,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
 } from 'typeorm';
 
 @Entity({
@@ -38,4 +40,7 @@ export class AgencyModel {
 
     @UpdateDateColumn({ type: 'timestamptz', precision: 3 })
     updatedAt: Date;
+
+    @OneToMany(() => RouteModel, (route) => route.agency)
+    routes?: RouteModel[];
 }
