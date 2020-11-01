@@ -1,7 +1,7 @@
 import { StationId } from './station-id';
 
 export interface IStationProps {
-    stationId: StationId;
+    // stationId: StationId;
     stationName: string;
     stationSubName: string;
     stationType: number;

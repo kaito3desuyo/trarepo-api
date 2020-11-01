@@ -1,7 +1,6 @@
-import { BaseStationDto } from '../dtos/base-station.dto';
-import { Station } from '../../domain/station';
-import { StationId } from '../../domain/station-id';
 import { UniqueEntityID } from '@src/core/classes/unique-entity-id';
+import { Station } from '../../domain/station';
+import { BaseStationDto } from '../dtos/base-station.dto';
 
 export class StationDomainBuilder implements BaseStationDto {
     stationId: string;
@@ -23,19 +22,21 @@ export class StationDomainBuilder implements BaseStationDto {
     }
 
     build(): Station {
-        return Station.create({
-            stationId: StationId.create(new UniqueEntityID(this.stationId)),
-            stationName: this.stationName,
-            stationSubName: this.stationSubName ?? null,
-            stationType: this.stationType,
-            stationDescription: this.stationDescription ?? null,
-            stationLatLng: this.stationLatLng
-                ? {
-                      latitude: this.stationLatLng?.split(',')[0] ?? null,
-                      longitude: this.stationLatLng?.split(',')[1] ?? null,
-                  }
-                : null,
-            stationUrl: this.stationUrl ?? null,
-        });
+        return Station.create(
+            {
+                stationName: this.stationName,
+                stationSubName: this.stationSubName ?? null,
+                stationType: this.stationType,
+                stationDescription: this.stationDescription ?? null,
+                stationLatLng: this.stationLatLng
+                    ? {
+                          latitude: this.stationLatLng?.split(',')[0] ?? null,
+                          longitude: this.stationLatLng?.split(',')[1] ?? null,
+                      }
+                    : null,
+                stationUrl: this.stationUrl ?? null,
+            },
+            new UniqueEntityID(this.stationId),
+        );
     }
 }

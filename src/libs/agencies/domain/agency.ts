@@ -1,5 +1,6 @@
 import { AggregateRoot } from '@src/core/classes/aggregate-root';
 import { UniqueEntityID } from '@src/core/classes/unique-entity-id';
+import { AgencyId } from './agency-id';
 import { IAgencyProps, IAgencyNotification } from './agency.interface';
 
 export class Agency extends AggregateRoot<IAgencyProps> {
@@ -12,7 +13,7 @@ export class Agency extends AggregateRoot<IAgencyProps> {
     }
 
     public notify(notifier: IAgencyNotification) {
-        notifier.agencyId = this.props.agencyId;
+        notifier.agencyId = AgencyId.create(this.id);
         notifier.agencyNumber = this.props.agencyNumber;
         notifier.agencyOfficialName = this.props.agencyOfficialName;
         notifier.agencyName = this.props.agencyName;

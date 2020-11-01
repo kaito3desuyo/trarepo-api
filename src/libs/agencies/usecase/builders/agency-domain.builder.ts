@@ -23,14 +23,16 @@ export class AgencyDomainBuilder implements BaseAgencyDto {
     }
 
     build(): Agency {
-        return Agency.create({
-            agencyId: AgencyId.create(new UniqueEntityID(this.agencyId)),
-            agencyNumber: this.agencyNumber,
-            agencyOfficialName: this.agencyOfficialName,
-            agencyName: this.agencyName,
-            agencyPhone: this.agencyPhone,
-            agencyUrl: this.agencyUrl,
-            agencyFareUrl: this.agencyFareUrl,
-        });
+        return Agency.create(
+            {
+                agencyNumber: this.agencyNumber,
+                agencyOfficialName: this.agencyOfficialName,
+                agencyName: this.agencyName,
+                agencyPhone: this.agencyPhone,
+                agencyUrl: this.agencyUrl,
+                agencyFareUrl: this.agencyFareUrl,
+            },
+            new UniqueEntityID(this.agencyId),
+        );
     }
 }

@@ -1,7 +1,7 @@
 import { AgencyId } from './agency-id';
 
 export interface IAgencyProps {
-    agencyId: AgencyId;
+    // agencyId: AgencyId;
     agencyNumber: string;
     agencyOfficialName: string;
     agencyName: string;
