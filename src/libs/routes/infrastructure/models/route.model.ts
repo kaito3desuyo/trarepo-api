@@ -39,10 +39,10 @@ export class RouteModel {
     @Column({ type: 'varchar', nullable: true })
     routeUrl!: string | null;
 
-    @Column({ type: 'varchar', precision: 7, nullable: true })
+    @Column({ type: 'varchar', length: 7, nullable: true })
     routeColor!: string | null;
 
-    @Column({ type: 'varchar', precision: 7, nullable: true })
+    @Column({ type: 'varchar', length: 7, nullable: true })
     routeTextColor!: string | null;
 
     @Column({ type: 'int', nullable: true })
