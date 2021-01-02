@@ -1,5 +1,5 @@
 import { AgencyModel } from '@src/libs/agencies/infrastructure/models/agency.model';
-import { mapValues, values } from 'lodash';
+import { values } from 'lodash';
 import {
     Column,
     CreateDateColumn,

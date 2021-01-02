@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsUUID } from 'class-validator';
 
-export class PutStationParam {
+export class RemoveStationParam {
     @ApiProperty()
     @IsUUID()
     stationId!: string;

@@ -1,6 +1,6 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
-import { IsOptional, IsUUID } from 'class-validator';
+import { IsOptional } from 'class-validator';
 import { ERouteType } from '../../domain/route-type.enum';
 import { ValidatableRouteDto } from './validatable-route.dto';
 

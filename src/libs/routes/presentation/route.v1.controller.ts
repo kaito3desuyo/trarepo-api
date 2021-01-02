@@ -9,7 +9,7 @@ import {
     Query,
     UseInterceptors,
 } from '@nestjs/common';
-import { ApiOkResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { PaginationInterceptor } from '@src/core/interceptors/pagination.interceptor';
 import { Pagination } from 'nestjs-typeorm-paginate';
 import { CreateRouteDto } from '../usecase/dtos/create-route.dto';

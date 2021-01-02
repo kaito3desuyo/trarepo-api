@@ -10,17 +10,17 @@ import { BaseStationDto } from './base-station.dto';
 
 export class ValidatableStationDto extends BaseStationDto {
     @IsUUID()
-    stationId!: string;
+    stationId?: string;
 
     @IsString()
-    stationName!: string;
+    stationName?: string;
 
     @IsOptional()
     @IsString()
     stationSubName?: string;
 
     @IsInt()
-    stationType!: number;
+    stationType?: number;
 
     @IsOptional()
     @IsString()

@@ -1,7 +1,7 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { ValidatableAgencyDto } from './validatable-agency.dto';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
 import { IsOptional } from 'class-validator';
+import { ValidatableAgencyDto } from './validatable-agency.dto';
 
 export class UpdateAgencyDto extends ValidatableAgencyDto {
     @IsOptional()

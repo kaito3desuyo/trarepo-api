@@ -1,22 +1,25 @@
 import {
     Body,
     Controller,
-    Get,
-    Post,
-    Param,
-    Put,
-    UnprocessableEntityException,
     Delete,
-    HttpCode,
-    HttpStatus,
+    Get,
+    Param,
+    Post,
+    Put,
+    Query,
+    UseInterceptors,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { PaginationInterceptor } from '@src/core/interceptors/pagination.interceptor';
+import { Pagination } from 'nestjs-typeorm-paginate';
 import { CreateStationDto } from '../usecase/dtos/create-station.dto';
-import { StationService } from '../usecase/station.service';
-import { GetStationByIdParam } from './params/get-station-by-id.param';
-import { PutStationParam } from './params/put-station.param';
+import { StationDetailsDto } from '../usecase/dtos/station-details.dto';
 import { UpdateStationDto } from '../usecase/dtos/update-station.dto';
-import { DeleteStationParam } from './params/delete-station.param';
+import { FindManyStationQueryParam } from '../usecase/params/find-many-station.query-param';
+import { FindStationByIdParam } from '../usecase/params/find-station-by-id.param';
+import { RemoveStationParam } from '../usecase/params/remove-station.param';
+import { UpdateStationParam } from '../usecase/params/update-station.param';
+import { StationService } from '../usecase/station.service';
 
 @Controller()
 @ApiTags('stations')
@@ -24,37 +27,38 @@ export class StationV1Controller {
     constructor(private readonly stationService: StationService) {}
 
     @Get()
-    getStations() {
-        return this.stationService.findMany();
+    @UseInterceptors(PaginationInterceptor)
+    @ApiOkResponse({ type: [StationDetailsDto] })
+    getStations(
+        @Query() queries: FindManyStationQueryParam,
+    ): Promise<Pagination<StationDetailsDto>> {
+        return this.stationService.findMany(queries);
     }
 
     @Get('/:stationId')
-    getStationById(@Param() params: GetStationByIdParam) {
-        return this.stationService.findOne(params.stationId);
+    getStationById(
+        @Param() params: FindStationByIdParam,
+    ): Promise<StationDetailsDto> {
+        return this.stationService.findById(params.stationId);
     }
 
     @Post()
-    postStation(@Body() body: CreateStationDto) {
+    postStation(@Body() body: CreateStationDto): Promise<StationDetailsDto> {
         return this.stationService.add(body);
     }
 
     @Put('/:stationId')
     putStation(
-        @Param() params: PutStationParam,
+        @Param() params: UpdateStationParam,
         @Body() body: UpdateStationDto,
-    ) {
-        if (params.stationId !== body.stationId) {
-            throw new UnprocessableEntityException(
-                'params.stationId and body.stationId are different.',
-            );
-        }
-
-        return this.stationService.update(body);
+    ): Promise<StationDetailsDto> {
+        return this.stationService.update(params, body);
     }
 
     @Delete('/:stationId')
-    @HttpCode(HttpStatus.NO_CONTENT)
-    deleteStation(@Param() params: DeleteStationParam) {
+    deleteStation(
+        @Param() params: RemoveStationParam,
+    ): Promise<StationDetailsDto> {
         return this.stationService.remove(params.stationId);
     }
 }

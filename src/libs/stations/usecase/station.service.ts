@@ -5,6 +5,9 @@ import { StationCommand } from '../infrastructure/commands/station.command';
 import { StationDomainBuilder } from './builders/station-domain.builder';
 import { StationQuery } from '../infrastructure/queries/station.query';
 import { UpdateStationDto } from './dtos/update-station.dto';
+import { UpdateStationParam } from './params/update-station.param';
+import { FindManyStationQueryParam } from './params/find-many-station.query-param';
+import { Pagination } from 'nestjs-typeorm-paginate';
 
 @Injectable()
 export class StationService {
@@ -13,13 +16,17 @@ export class StationService {
         private readonly stationQuery: StationQuery,
     ) {}
 
-    async findMany(): Promise<StationDetailsDto[]> {
-        const result = await this.stationQuery.findMany();
-        return result;
+    async findMany(
+        params: FindManyStationQueryParam,
+    ): Promise<Pagination<StationDetailsDto>> {
+        return this.stationQuery.findMany({
+            pageIndex: params.page,
+            pageSize: params.per,
+        });
     }
 
-    async findOne(id: string): Promise<StationDetailsDto> {
-        const result = await this.stationQuery.findOne(id);
+    async findById(id: string): Promise<StationDetailsDto> {
+        const result = await this.stationQuery.findById(id);
 
         if (!result) {
             throw new UnprocessableEntityException('Station not found.');
@@ -34,29 +41,32 @@ export class StationService {
         return result[0];
     }
 
-    async update(dto: UpdateStationDto): Promise<StationDetailsDto> {
-        const current = await this.stationQuery.findOne(dto.stationId);
+    async update(
+        params: UpdateStationParam,
+        dto: UpdateStationDto,
+    ): Promise<StationDetailsDto> {
+        const target = await this.stationQuery.findById(params.stationId);
 
-        if (!current) {
+        if (!target) {
             throw new UnprocessableEntityException('Station not found.');
         }
 
-        const domain = new StationDomainBuilder({
-            ...current,
-            ...dto,
-        }).build();
+        const domain = new StationDomainBuilder(target).build();
+        domain.updateDetails(new StationDomainBuilder(dto).getProps());
+
         const result = await this.stationCommand.save(domain);
         return result[0];
     }
 
-    async remove(id: string): Promise<void> {
-        const current = await this.stationQuery.findOne(id);
+    async remove(id: string): Promise<StationDetailsDto> {
+        const current = await this.stationQuery.findById(id);
 
         if (!current) {
             throw new UnprocessableEntityException('Station not found.');
         }
 
         const domain = new StationDomainBuilder(current).build();
-        await this.stationCommand.remove(domain);
+        const result = await this.stationCommand.remove(domain);
+        return result[0];
     }
 }

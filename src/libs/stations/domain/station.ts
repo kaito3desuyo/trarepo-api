@@ -1,7 +1,11 @@
 import { AggregateRoot } from '@src/core/classes/aggregate-root';
-import { IStationProps, IStationNotification } from './station.interface';
 import { UniqueEntityID } from '@src/core/classes/unique-entity-id';
 import { StationId } from './station-id';
+import {
+    IStationNotification,
+    IStationProps,
+    IStationUpdateDetailsProps,
+} from './station.interface';
 
 export class Station extends AggregateRoot<IStationProps> {
     private constructor(props: IStationProps, id?: UniqueEntityID) {
@@ -10,6 +14,27 @@ export class Station extends AggregateRoot<IStationProps> {
 
     static create(props: IStationProps, id?: UniqueEntityID): Station {
         return new Station(props, id);
+    }
+
+    public updateDetails(props: IStationUpdateDetailsProps): void {
+        if (props.stationName !== undefined) {
+            this.props.stationName = props.stationName;
+        }
+        if (props.stationSubName !== undefined) {
+            this.props.stationSubName = props.stationSubName;
+        }
+        if (props.stationType !== undefined) {
+            this.props.stationType = props.stationType;
+        }
+        if (props.stationDescription !== undefined) {
+            this.props.stationDescription = props.stationDescription;
+        }
+        if (props.stationLatLng !== undefined) {
+            this.props.stationLatLng = props.stationLatLng;
+        }
+        if (props.stationUrl !== undefined) {
+            this.props.stationUrl = props.stationUrl;
+        }
     }
 
     public notify(notifier: IStationNotification): void {

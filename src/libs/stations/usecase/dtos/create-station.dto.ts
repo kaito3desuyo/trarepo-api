@@ -6,23 +6,23 @@ import { ApiProperty } from '@nestjs/swagger';
 export class CreateStationDto extends ValidatableStationDto {
     @IsOptional()
     @Exclude()
-    stationId!: string;
+    stationId?: string;
 
-    @ApiProperty()
+    @ApiProperty({ type: 'string' })
     stationName!: string;
 
-    @ApiProperty({ nullable: true })
+    @ApiProperty({ type: 'string', nullable: true })
     stationSubName!: string;
 
-    @ApiProperty()
+    @ApiProperty({ type: 'number' })
     stationType!: number;
 
-    @ApiProperty({ nullable: true })
+    @ApiProperty({ type: 'string', nullable: true })
     stationDescription!: string;
 
-    @ApiProperty({ nullable: true })
+    @ApiProperty({ type: 'string', nullable: true })
     stationLatLng!: string;
 
-    @ApiProperty({ nullable: true })
+    @ApiProperty({ type: 'string', nullable: true })
     stationUrl!: string;
 }
