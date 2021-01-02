@@ -3,23 +3,23 @@ import { BaseAgencyDto } from './base-agency.dto';
 
 export class AgencyDetailsDto extends BaseAgencyDto {
     @ApiProperty()
-    agencyId: string;
+    agencyId!: string;
 
     @ApiProperty()
-    agencyNumber: string;
+    agencyNumber!: string;
 
     @ApiProperty()
-    agencyOfficialName: string;
+    agencyOfficialName!: string;
 
     @ApiProperty()
-    agencyName: string;
+    agencyName!: string;
 
     @ApiProperty()
-    agencyPhone: string;
+    agencyPhone!: string;
 
     @ApiProperty()
-    agencyUrl: string;
+    agencyUrl!: string;
 
     @ApiProperty()
-    agencyFareUrl: string;
+    agencyFareUrl!: string;
 }

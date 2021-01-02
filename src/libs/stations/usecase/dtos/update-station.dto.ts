@@ -4,29 +4,29 @@ import { ValidatableStationDto } from './validatable-station.dto';
 
 export class UpdateStationDto extends ValidatableStationDto {
     @ApiProperty()
-    stationId: string;
+    stationId!: string;
 
     @ApiProperty({ required: false })
     @IsOptional()
-    stationName: string;
+    stationName!: string;
 
     @ApiProperty({ nullable: true, required: false })
     @IsOptional()
-    stationSubName: string;
+    stationSubName!: string;
 
     @ApiProperty({ required: false })
     @IsOptional()
-    stationType: number;
+    stationType!: number;
 
     @ApiProperty({ nullable: true, required: false })
     @IsOptional()
-    stationDescription: string;
+    stationDescription!: string;
 
     @ApiProperty({ nullable: true, required: false })
     @IsOptional()
-    stationLatLng: string;
+    stationLatLng!: string;
 
     @ApiProperty({ nullable: true, required: false })
     @IsOptional()
-    stationUrl: string;
+    stationUrl!: string;
 }

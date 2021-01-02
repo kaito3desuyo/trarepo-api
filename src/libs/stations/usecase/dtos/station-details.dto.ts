@@ -3,23 +3,23 @@ import { BaseStationDto } from './base-station.dto';
 
 export class StationDetailsDto extends BaseStationDto {
     @ApiProperty()
-    stationId: string;
+    stationId!: string;
 
     @ApiProperty()
-    stationName: string;
+    stationName!: string;
 
     @ApiProperty()
-    stationSubName: string;
+    stationSubName!: string;
 
     @ApiProperty()
-    stationType: number;
+    stationType!: number;
 
     @ApiProperty()
-    stationDescription: string;
+    stationDescription!: string;
 
     @ApiProperty()
-    stationLatLng: string;
+    stationLatLng!: string;
 
     @ApiProperty()
-    stationUrl: string;
+    stationUrl!: string;
 }
