@@ -37,7 +37,7 @@
         "lodash": "^4.17.20",
         "module-alias": "^2.2.2",
         "nest-router": "^1.0.9",
-        "nestjs-typeorm-paginate": "^2.0.3",
+        "nestjs-typeorm-paginate": "^2.2.6",
         "pg": "^8.5.1",
         "pluralize": "^8.0.0",
         "reflect-metadata": "^0.1.13",
