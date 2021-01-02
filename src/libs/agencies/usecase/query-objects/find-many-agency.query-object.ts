@@ -1,4 +1,4 @@
 export class FindManyAgencyQueryObject {
-    pageIndex: number;
-    pageSize: number;
+    pageIndex!: number;
+    pageSize!: number;
 }

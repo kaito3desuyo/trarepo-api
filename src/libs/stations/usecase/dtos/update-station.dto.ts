@@ -1,32 +1,34 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiPropertyOptional } from '@nestjs/swagger';
+import { Exclude } from 'class-transformer';
 import { IsOptional } from 'class-validator';
 import { ValidatableStationDto } from './validatable-station.dto';
 
 export class UpdateStationDto extends ValidatableStationDto {
-    @ApiProperty()
-    stationId: string;
-
-    @ApiProperty({ required: false })
     @IsOptional()
-    stationName: string;
+    @Exclude()
+    stationId!: string;
 
-    @ApiProperty({ nullable: true, required: false })
+    @ApiPropertyOptional({ type: 'string' })
     @IsOptional()
-    stationSubName: string;
+    stationName?: string;
 
-    @ApiProperty({ required: false })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
-    stationType: number;
+    stationSubName?: string;
 
-    @ApiProperty({ nullable: true, required: false })
+    @ApiPropertyOptional({ type: 'number' })
     @IsOptional()
-    stationDescription: string;
+    stationType?: number;
 
-    @ApiProperty({ nullable: true, required: false })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
-    stationLatLng: string;
+    stationDescription?: string;
 
-    @ApiProperty({ nullable: true, required: false })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
-    stationUrl: string;
+    stationLatLng?: string;
+
+    @ApiPropertyOptional({ type: 'string', nullable: true })
+    @IsOptional()
+    stationUrl?: string;
 }

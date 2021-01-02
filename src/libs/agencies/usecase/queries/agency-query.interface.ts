@@ -7,5 +7,5 @@ export interface IAgencyQuery {
     findMany(
         qo: FindManyAgencyQueryObject,
     ): Promise<Pagination<AgencyDetailsDto>>;
-    findById(id: string): Promise<AgencyDetailsDto>;
+    findById(id: string): Promise<AgencyDetailsDto | null>;
 }

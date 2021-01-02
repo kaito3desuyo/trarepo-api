@@ -13,7 +13,7 @@ export class PaginationInterceptor implements NestInterceptor {
     intercept(
         context: ExecutionContext,
         next: CallHandler<Pagination<unknown>>,
-    ): Observable<any> {
+    ): Observable<unknown[]> {
         const res = context.switchToHttp().getResponse();
 
         return next.handle().pipe(

@@ -22,6 +22,7 @@ const ORM_CONFIG: TypeOrmModuleOptions = {
         migrationsDir: join('db', 'migrations'),
     },
     namingStrategy: new TypeOrmNamingStrategy(),
+    uuidExtension: 'pgcrypto',
 };
 
 export = ORM_CONFIG;

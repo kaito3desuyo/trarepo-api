@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsUUID } from 'class-validator';
 
-export class DeleteStationParam {
+export class RemoveRouteParam {
     @ApiProperty()
     @IsUUID()
-    stationId: string;
+    routeId!: string;
 }

@@ -1,41 +1,46 @@
+import { RouteModel } from '@src/libs/routes/infrastructure/models/route.model';
 import {
-    Entity,
-    PrimaryGeneratedColumn,
     Column,
     CreateDateColumn,
-    UpdateDateColumn,
+    Entity,
     Index,
+    OneToMany,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
 } from 'typeorm';
 
 @Entity({
     name: 'agencies',
 })
 export class AgencyModel {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+    @PrimaryGeneratedColumn({ type: 'uuid' })
+    id!: string;
 
-    @Column()
+    @Column({ type: 'varchar' })
     @Index({ unique: true })
-    agencyNumber: string;
+    agencyNumber!: string;
 
-    @Column()
-    agencyOfficialName: string;
+    @Column({ type: 'varchar' })
+    agencyOfficialName!: string;
 
-    @Column()
-    agencyName: string;
+    @Column({ type: 'varchar' })
+    agencyName!: string;
 
-    @Column()
-    agencyPhone: string;
+    @Column({ type: 'varchar' })
+    agencyPhone!: string;
 
-    @Column()
-    agencyUrl: string;
+    @Column({ type: 'varchar' })
+    agencyUrl!: string;
 
-    @Column()
-    agencyFareUrl: string;
+    @Column({ type: 'varchar' })
+    agencyFareUrl!: string;
 
     @CreateDateColumn({ type: 'timestamptz', precision: 3 })
-    createdAt: Date;
+    createdAt!: Date;
 
     @UpdateDateColumn({ type: 'timestamptz', precision: 3 })
-    updatedAt: Date;
+    updatedAt!: Date;
+
+    @OneToMany(() => RouteModel, (route) => route.agency)
+    routes?: RouteModel[];
 }

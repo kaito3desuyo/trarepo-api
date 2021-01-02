@@ -1,28 +1,34 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { ValidatableAgencyDto } from './validatable-agency.dto';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
 import { IsOptional } from 'class-validator';
+import { ValidatableAgencyDto } from './validatable-agency.dto';
 
 export class UpdateAgencyDto extends ValidatableAgencyDto {
     @IsOptional()
     @Exclude()
-    agencyId: string;
+    agencyId?: string;
 
-    @ApiProperty()
-    agencyNumber: string;
+    @IsOptional()
+    @Exclude()
+    agencyNumber?: string;
 
-    @ApiProperty()
-    agencyOfficialName: string;
+    @ApiPropertyOptional({ type: 'string' })
+    @IsOptional()
+    agencyOfficialName?: string;
 
-    @ApiProperty()
-    agencyName: string;
+    @ApiPropertyOptional({ type: 'string' })
+    @IsOptional()
+    agencyName?: string;
 
-    @ApiProperty()
-    agencyPhone: string;
+    @ApiPropertyOptional({ type: 'string' })
+    @IsOptional()
+    agencyPhone?: string;
 
-    @ApiProperty()
-    agencyUrl: string;
+    @ApiPropertyOptional({ type: 'string' })
+    @IsOptional()
+    agencyUrl?: string;
 
-    @ApiProperty()
-    agencyFareUrl: string;
+    @ApiPropertyOptional({ type: 'string' })
+    @IsOptional()
+    agencyFareUrl?: string;
 }

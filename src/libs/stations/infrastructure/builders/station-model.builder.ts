@@ -3,16 +3,16 @@ import { StationId } from '../../domain/station-id';
 import { StationModel } from '../models/station.model';
 
 export class StationModelBuilder implements IStationNotification {
-    private _stationId: StationId;
-    private _stationName: string;
-    private _stationSubName: string;
-    private _stationType: number;
-    private _stationDescription: string;
-    private _stationLatLng: {
+    private _stationId!: StationId;
+    private _stationName!: string;
+    private _stationSubName!: string;
+    private _stationType!: number;
+    private _stationDescription!: string;
+    private _stationLatLng!: {
         latitude: string;
         longitude: string;
     };
-    private _stationUrl: string;
+    private _stationUrl!: string;
 
     set stationId(stationId: StationId) {
         this._stationId = stationId;

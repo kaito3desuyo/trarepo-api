@@ -1,27 +1,29 @@
 import { StationId } from './station-id';
 
 export interface IStationProps {
-    stationId: StationId;
     stationName: string;
-    stationSubName: string;
+    stationSubName: string | null;
     stationType: number;
-    stationDescription: string;
+    stationDescription: string | null;
     stationLatLng: {
         latitude: string;
         longitude: string;
-    };
-    stationUrl: string;
+    } | null;
+    stationUrl: string | null;
 }
 
-export interface IStationNotification {
+export type IStationUpdateDetailsProps = Partial<
+    Pick<
+        IStationProps,
+        | 'stationName'
+        | 'stationSubName'
+        | 'stationType'
+        | 'stationDescription'
+        | 'stationLatLng'
+        | 'stationUrl'
+    >
+>;
+
+export interface IStationNotification extends IStationProps {
     stationId: StationId;
-    stationName: string;
-    stationSubName: string;
-    stationType: number;
-    stationDescription: string;
-    stationLatLng: {
-        latitude: string;
-        longitude: string;
-    };
-    stationUrl: string;
 }

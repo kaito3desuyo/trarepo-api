@@ -6,7 +6,7 @@ import { customValidationPipe } from './core/pipes/custom-validation.pipe';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import helmet from 'helmet';
 
-async function bootstrap() {
+async function bootstrap(): Promise<void> {
     const app = await NestFactory.create<NestExpressApplication>(AppModule);
     app.use(helmet());
     app.enableCors();

@@ -6,23 +6,23 @@ import { ApiProperty } from '@nestjs/swagger';
 export class CreateAgencyDto extends ValidatableAgencyDto {
     @IsOptional()
     @Exclude()
-    agencyId: string;
+    agencyId?: string;
 
-    @ApiProperty()
-    agencyNumber: string;
+    @ApiProperty({ type: 'string' })
+    agencyNumber!: string;
 
-    @ApiProperty()
-    agencyOfficialName: string;
+    @ApiProperty({ type: 'string' })
+    agencyOfficialName!: string;
 
-    @ApiProperty()
-    agencyName: string;
+    @ApiProperty({ type: 'string' })
+    agencyName!: string;
 
-    @ApiProperty()
-    agencyPhone: string;
+    @ApiProperty({ type: 'string' })
+    agencyPhone!: string;
 
-    @ApiProperty()
-    agencyUrl: string;
+    @ApiProperty({ type: 'string' })
+    agencyUrl!: string;
 
-    @ApiProperty()
-    agencyFareUrl: string;
+    @ApiProperty({ type: 'string' })
+    agencyFareUrl!: string;
 }

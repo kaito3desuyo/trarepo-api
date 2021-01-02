@@ -1,7 +1,7 @@
 import { isEqual } from 'lodash';
 
 interface ValueObjectProps {
-    [key: string]: any;
+    [key: string]: unknown;
 }
 
 export abstract class ValueObject<T extends ValueObjectProps> {

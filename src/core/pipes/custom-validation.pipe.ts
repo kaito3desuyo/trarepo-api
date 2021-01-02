@@ -8,5 +8,6 @@ export const customValidationPipe = new ValidationPipe({
         target: false,
         value: false,
     },
-    exceptionFactory: (e) => new UnprocessableEntityException(e),
+    exceptionFactory: (e): UnprocessableEntityException =>
+        new UnprocessableEntityException(e),
 });

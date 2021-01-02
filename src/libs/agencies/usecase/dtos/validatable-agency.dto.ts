@@ -9,23 +9,23 @@ import { BaseAgencyDto } from './base-agency.dto';
 
 export class ValidatableAgencyDto extends BaseAgencyDto {
     @IsUUID()
-    agencyId: string;
+    agencyId?: string;
 
     @IsNumberString()
-    agencyNumber: string;
+    agencyNumber?: string;
 
     @IsString()
-    agencyOfficialName: string;
+    agencyOfficialName?: string;
 
     @IsString()
-    agencyName: string;
+    agencyName?: string;
 
     @IsPhoneNumber('JP')
-    agencyPhone: string;
+    agencyPhone?: string;
 
     @IsUrl()
-    agencyUrl: string;
+    agencyUrl?: string;
 
     @IsUrl()
-    agencyFareUrl: string;
+    agencyFareUrl?: string;
 }
