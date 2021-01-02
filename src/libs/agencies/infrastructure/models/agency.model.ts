@@ -13,26 +13,26 @@ import {
     name: 'agencies',
 })
 export class AgencyModel {
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn({ type: 'uuid' })
     id!: string;
 
-    @Column()
+    @Column({ type: 'varchar' })
     @Index({ unique: true })
     agencyNumber!: string;
 
-    @Column()
+    @Column({ type: 'varchar' })
     agencyOfficialName!: string;
 
-    @Column()
+    @Column({ type: 'varchar' })
     agencyName!: string;
 
-    @Column()
+    @Column({ type: 'varchar' })
     agencyPhone!: string;
 
-    @Column()
+    @Column({ type: 'varchar' })
     agencyUrl!: string;
 
-    @Column()
+    @Column({ type: 'varchar' })
     agencyFareUrl!: string;
 
     @CreateDateColumn({ type: 'timestamptz', precision: 3 })

@@ -57,10 +57,9 @@ export class AgencyService {
             throw new NotFoundException('Agency not found.');
         }
 
-        const domain = new AgencyDomainBuilder({
-            ...target,
-            ...dto,
-        }).build();
+        const domain = new AgencyDomainBuilder(target).build();
+        domain.updateDetails(new AgencyDomainBuilder(dto).getProps());
+
         const result = await this.agencyCommand.save(domain);
         return result[0];
     }

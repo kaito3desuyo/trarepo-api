@@ -9,41 +9,41 @@ export class CreateRouteDto extends ValidatableRouteDto {
     @Exclude()
     routeId?: string;
 
-    @ApiProperty()
+    @ApiProperty({ type: 'string' })
     agencyId!: string;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
     routeCode?: string | null;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
     routeShortName?: string | null;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
     routeLongName?: string | null;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
     routeDescription?: string | null;
 
-    @ApiProperty({ enum: ERouteType })
+    @ApiProperty({ type: 'enum', enum: ERouteType })
     routeType!: ERouteType;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
     routeUrl?: string | null;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
     routeColor?: string | null;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
     routeTextColor?: string | null;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'number', nullable: true })
     @IsOptional()
     routeSortOrder?: number | null;
 }

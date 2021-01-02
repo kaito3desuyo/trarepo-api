@@ -1,15 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsInt } from 'class-validator';
+import { IsPositive } from 'class-validator';
 
 export class FindManyRouteQueryParam {
     @ApiProperty()
     @Type(() => Number)
-    @IsInt()
+    @IsPositive()
     page!: number;
 
     @ApiProperty()
     @Type(() => Number)
-    @IsInt()
+    @IsPositive()
     per!: number;
 }

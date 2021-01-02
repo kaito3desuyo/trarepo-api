@@ -6,7 +6,6 @@ import {
     IsString,
     IsUrl,
     IsUUID,
-    Min,
 } from 'class-validator';
 import { ERouteType } from '../../domain/route-type.enum';
 import { BaseRouteDto } from './base-route.dto';

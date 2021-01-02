@@ -13,12 +13,7 @@ export class Route extends AggregateRoot<IRouteProps> {
     }
 
     static create(props: IRouteProps, id?: UniqueEntityID): Route {
-        return new Route(
-            {
-                ...props,
-            },
-            id,
-        );
+        return new Route(props, id);
     }
 
     public updateDetails(props: IRouteUpdateDetailsProps): void {

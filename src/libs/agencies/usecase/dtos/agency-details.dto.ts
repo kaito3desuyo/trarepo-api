@@ -2,24 +2,24 @@ import { ApiProperty } from '@nestjs/swagger';
 import { BaseAgencyDto } from './base-agency.dto';
 
 export class AgencyDetailsDto extends BaseAgencyDto {
-    @ApiProperty()
+    @ApiProperty({ type: 'string' })
     agencyId!: string;
 
-    @ApiProperty()
+    @ApiProperty({ type: 'string' })
     agencyNumber!: string;
 
-    @ApiProperty()
+    @ApiProperty({ type: 'string' })
     agencyOfficialName!: string;
 
-    @ApiProperty()
+    @ApiProperty({ type: 'string' })
     agencyName!: string;
 
-    @ApiProperty()
+    @ApiProperty({ type: 'string' })
     agencyPhone!: string;
 
-    @ApiProperty()
+    @ApiProperty({ type: 'string' })
     agencyUrl!: string;
 
-    @ApiProperty()
+    @ApiProperty({ type: 'string' })
     agencyFareUrl!: string;
 }

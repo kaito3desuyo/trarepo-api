@@ -9,7 +9,7 @@ import {
     Query,
     UseInterceptors,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PaginationInterceptor } from '@src/core/interceptors/pagination.interceptor';
 import { Pagination } from 'nestjs-typeorm-paginate';
 import { CreateRouteDto } from '../usecase/dtos/create-route.dto';
@@ -28,6 +28,7 @@ export class RouteV1Controller {
 
     @Get()
     @UseInterceptors(PaginationInterceptor)
+    @ApiOkResponse({ type: [RouteDetailsDto] })
     getRoutes(
         @Query() queries: FindManyRouteQueryParam,
     ): Promise<Pagination<RouteDetailsDto>> {

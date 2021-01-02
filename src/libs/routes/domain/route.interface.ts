@@ -3,7 +3,6 @@ import { RouteId } from './route-id';
 import { ERouteType } from './route-type.enum';
 
 export interface IRouteProps {
-    // routeId: RouteId;
     agencyId: AgencyId;
     routeCode: string | null;
     routeShortName: string | null;
