@@ -34,7 +34,7 @@
         "class-transformer": "^0.2.3",
         "class-validator": "^0.12.1",
         "helmet": "^3.22.0",
-        "lodash": "^4.17.15",
+        "lodash": "^4.17.20",
         "module-alias": "^2.2.2",
         "nest-router": "^1.0.9",
         "nestjs-typeorm-paginate": "^2.0.3",
