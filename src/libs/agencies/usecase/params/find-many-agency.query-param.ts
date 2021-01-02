@@ -6,10 +6,10 @@ export class FindManyAgencyQueryParam {
     @ApiProperty()
     @Type(() => Number)
     @IsInt()
-    page: number;
+    page!: number;
 
     @ApiProperty()
     @Type(() => Number)
     @IsInt()
-    per: number;
+    per!: number;
 }

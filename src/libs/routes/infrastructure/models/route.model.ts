@@ -1,4 +1,5 @@
 import { AgencyModel } from '@src/libs/agencies/infrastructure/models/agency.model';
+import { mapValues, values } from 'lodash';
 import {
     Column,
     CreateDateColumn,
@@ -14,44 +15,44 @@ import { ERouteType } from '../../domain/route-type.enum';
     name: 'routes',
 })
 export class RouteModel {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+    @PrimaryGeneratedColumn({ type: 'uuid' })
+    id!: string;
 
-    @Column('uuid')
-    agencyId: string;
+    @Column({ type: 'uuid' })
+    agencyId!: string;
 
-    @Column({ nullable: true })
-    routeCode: string;
+    @Column({ type: 'varchar', nullable: true })
+    routeCode!: string | null;
 
-    @Column({ nullable: true })
-    routeShortName: string;
+    @Column({ type: 'varchar', nullable: true })
+    routeShortName!: string | null;
 
-    @Column({ nullable: true })
-    routeLongName: string;
+    @Column({ type: 'varchar', nullable: true })
+    routeLongName!: string | null;
 
     @Column({ type: 'text', nullable: true })
-    routeDescription: string;
+    routeDescription!: string | null;
 
-    @Column({ type: 'enum', enum: ERouteType })
-    routeType: ERouteType;
+    @Column({ type: 'enum', enum: values(ERouteType) })
+    routeType!: ERouteType;
 
-    @Column({ nullable: true })
-    routeUrl: string;
+    @Column({ type: 'varchar', nullable: true })
+    routeUrl!: string | null;
 
-    @Column({ nullable: true })
-    routeColor: string;
+    @Column({ type: 'varchar', precision: 7, nullable: true })
+    routeColor!: string | null;
 
-    @Column({ nullable: true })
-    routeTextColor: string;
+    @Column({ type: 'varchar', precision: 7, nullable: true })
+    routeTextColor!: string | null;
 
-    @Column({ nullable: true })
-    routeSortOrder: number;
+    @Column({ type: 'int', nullable: true })
+    routeSortOrder!: number | null;
 
     @CreateDateColumn({ type: 'timestamptz', precision: 3 })
-    createdAt: Date;
+    createdAt!: Date;
 
     @UpdateDateColumn({ type: 'timestamptz', precision: 3 })
-    updatedAt: Date;
+    updatedAt!: Date;
 
     @ManyToOne(() => AgencyModel, (agency) => agency.routes, {
         onUpdate: 'CASCADE',

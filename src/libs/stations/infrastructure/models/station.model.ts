@@ -11,16 +11,16 @@ import {
 })
 export class StationModel {
     @PrimaryGeneratedColumn('uuid')
-    id: string;
+    id!: string;
 
     @Column('varchar')
-    stationName: string;
+    stationName!: string;
 
     @Column('varchar', { nullable: true })
     stationSubName?: string;
 
     @Column('smallint')
-    stationType: number;
+    stationType!: number;
 
     @Column('text', { nullable: true })
     stationDescription?: string;
@@ -40,9 +40,11 @@ export class StationModel {
 
     // wheelchair_boarding
 
+    // wheelchair_boarding
+
     @CreateDateColumn({ type: 'timestamptz', precision: 3 })
-    createdAt: Date;
+    createdAt!: Date;
 
     @UpdateDateColumn({ type: 'timestamptz', precision: 3 })
-    updatedAt: Date;
+    updatedAt!: Date;
 }

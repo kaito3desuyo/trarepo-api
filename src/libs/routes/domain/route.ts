@@ -8,24 +8,16 @@ export class Route extends AggregateRoot<IRouteProps> {
         super(props, id);
     }
 
-    static create(props: IRouteProps, id?: UniqueEntityID) {
+    static create(props: IRouteProps, id?: UniqueEntityID): Route {
         return new Route(
             {
                 ...props,
-                routeCode: props?.routeCode ?? null,
-                routeShortName: props?.routeShortName ?? null,
-                routeLongName: props?.routeLongName ?? null,
-                routeDescription: props?.routeDescription ?? null,
-                routeUrl: props?.routeUrl ?? null,
-                routeColor: props?.routeColor ?? null,
-                routeTextColor: props?.routeTextColor ?? null,
-                routeSortOrder: props?.routeSortOrder ?? null,
             },
             id,
         );
     }
 
-    public notify(notifier: IRouteNotification) {
+    public notify(notifier: IRouteNotification): void {
         notifier.routeId = RouteId.create(this._id);
         notifier.agencyId = this.props.agencyId;
         notifier.routeCode = this.props.routeCode;

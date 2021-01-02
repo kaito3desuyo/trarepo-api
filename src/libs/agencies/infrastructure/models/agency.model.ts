@@ -14,32 +14,32 @@ import {
 })
 export class AgencyModel {
     @PrimaryGeneratedColumn('uuid')
-    id: string;
+    id!: string;
 
     @Column()
     @Index({ unique: true })
-    agencyNumber: string;
+    agencyNumber!: string;
 
     @Column()
-    agencyOfficialName: string;
+    agencyOfficialName!: string;
 
     @Column()
-    agencyName: string;
+    agencyName!: string;
 
     @Column()
-    agencyPhone: string;
+    agencyPhone!: string;
 
     @Column()
-    agencyUrl: string;
+    agencyUrl!: string;
 
     @Column()
-    agencyFareUrl: string;
+    agencyFareUrl!: string;
 
     @CreateDateColumn({ type: 'timestamptz', precision: 3 })
-    createdAt: Date;
+    createdAt!: Date;
 
     @UpdateDateColumn({ type: 'timestamptz', precision: 3 })
-    updatedAt: Date;
+    updatedAt!: Date;
 
     @OneToMany(() => RouteModel, (route) => route.agency)
     routes?: RouteModel[];

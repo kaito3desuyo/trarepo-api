@@ -14,19 +14,19 @@ export class UpdateRouteDto extends ValidatableRouteDto {
 
     @ApiPropertyOptional({ nullable: true })
     @IsOptional()
-    routeCode?: string;
+    routeCode?: string | null;
 
     @ApiPropertyOptional({ nullable: true })
     @IsOptional()
-    routeShortName?: string;
+    routeShortName?: string | null;
 
     @ApiPropertyOptional({ nullable: true })
     @IsOptional()
-    routeLongName?: string;
+    routeLongName?: string | null;
 
     @ApiPropertyOptional({ nullable: true })
     @IsOptional()
-    routeDescription?: string;
+    routeDescription?: string | null;
 
     @ApiPropertyOptional({ enum: ERouteType })
     @IsOptional()
@@ -34,17 +34,17 @@ export class UpdateRouteDto extends ValidatableRouteDto {
 
     @ApiPropertyOptional({ nullable: true })
     @IsOptional()
-    routeUrl?: string;
+    routeUrl?: string | null;
 
     @ApiPropertyOptional({ nullable: true })
     @IsOptional()
-    routeColor?: string;
+    routeColor?: string | null;
 
     @ApiPropertyOptional({ nullable: true })
     @IsOptional()
-    routeTextColor?: string;
+    routeTextColor?: string | null;
 
     @ApiPropertyOptional({ nullable: true })
     @IsOptional()
-    routeSortOrder?: number;
+    routeSortOrder?: number | null;
 }

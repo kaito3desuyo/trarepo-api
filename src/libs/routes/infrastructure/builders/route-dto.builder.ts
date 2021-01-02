@@ -5,15 +5,15 @@ import { RouteModel } from '../models/route.model';
 export class RouteDtoBuilder implements RouteModel {
     id: string;
     agencyId: string;
-    routeCode: string;
-    routeShortName: string;
-    routeLongName: string;
-    routeDescription: string;
+    routeCode: string | null;
+    routeShortName: string | null;
+    routeLongName: string | null;
+    routeDescription: string | null;
     routeType: ERouteType;
-    routeUrl: string;
-    routeColor: string;
-    routeTextColor: string;
-    routeSortOrder: number;
+    routeUrl: string | null;
+    routeColor: string | null;
+    routeTextColor: string | null;
+    routeSortOrder: number | null;
     createdAt: Date;
     updatedAt: Date;
 

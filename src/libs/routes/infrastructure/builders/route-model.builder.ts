@@ -5,17 +5,17 @@ import { IRouteNotification } from '../../domain/route.interface';
 import { RouteModel } from '../models/route.model';
 
 export class RouteModelBuilder implements IRouteNotification {
-    private _routeId: RouteId;
-    private _agencyId: AgencyId;
-    private _routeCode: string;
-    private _routeShortName: string;
-    private _routeLongName: string;
-    private _routeDescription: string;
-    private _routeType: ERouteType;
-    private _routeUrl: string;
-    private _routeColor: string;
-    private _routeTextColor: string;
-    private _routeSortOrder: number;
+    private _routeId!: RouteId;
+    private _agencyId!: AgencyId;
+    private _routeCode!: string | null;
+    private _routeShortName!: string | null;
+    private _routeLongName!: string | null;
+    private _routeDescription!: string | null;
+    private _routeType!: ERouteType;
+    private _routeUrl!: string | null;
+    private _routeColor!: string | null;
+    private _routeTextColor!: string | null;
+    private _routeSortOrder!: number | null;
 
     set routeId(routeId: RouteId) {
         this._routeId = routeId;

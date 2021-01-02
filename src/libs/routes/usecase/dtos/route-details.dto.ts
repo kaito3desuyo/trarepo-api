@@ -12,33 +12,33 @@ export class RouteDetailsDto extends BaseRouteDto {
     @ApiProperty({
         nullable: true,
     })
-    routeCode!: string;
+    routeCode!: string | null;
 
     @ApiProperty({
         nullable: true,
     })
-    routeShortName!: string;
+    routeShortName!: string | null;
 
     @ApiProperty({
         nullable: true,
     })
-    routeLongName!: string;
+    routeLongName!: string | null;
 
     @ApiProperty({ nullable: true })
-    routeDescription!: string;
+    routeDescription!: string | null;
 
     @ApiProperty({ enum: ERouteType })
     routeType!: ERouteType;
 
     @ApiProperty({ nullable: true })
-    routeUrl!: string;
+    routeUrl!: string | null;
 
     @ApiProperty({ nullable: true })
-    routeColor!: string;
+    routeColor!: string | null;
 
     @ApiProperty({ nullable: true })
-    routeTextColor!: string;
+    routeTextColor!: string | null;
 
     @ApiProperty({ nullable: true })
-    routeSortOrder!: number;
+    routeSortOrder!: number | null;
 }

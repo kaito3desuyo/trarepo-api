@@ -19,30 +19,30 @@ export class ValidatableRouteDto extends BaseRouteDto {
     agencyId?: string;
 
     @IsString()
-    routeCode?: string;
+    routeCode?: string | null;
 
     @IsString()
-    routeShortName?: string;
+    routeShortName?: string | null;
 
     @IsString()
-    routeLongName?: string;
+    routeLongName?: string | null;
 
     @IsString()
-    routeDescription?: string;
+    routeDescription?: string | null;
 
     @IsEnum(ERouteType)
     routeType?: ERouteType;
 
     @IsUrl()
-    routeUrl?: string;
+    routeUrl?: string | null;
 
     @IsHexColor()
-    routeColor?: string;
+    routeColor?: string | null;
 
     @IsHexColor()
-    routeTextColor?: string;
+    routeTextColor?: string | null;
 
     @IsNumber()
     @IsPositive()
-    routeSortOrder?: number;
+    routeSortOrder?: number | null;
 }

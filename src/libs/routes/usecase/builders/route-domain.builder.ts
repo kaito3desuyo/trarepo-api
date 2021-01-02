@@ -5,17 +5,17 @@ import { ERouteType } from '../../domain/route-type.enum';
 import { BaseRouteDto } from '../dtos/base-route.dto';
 
 export class RouteDomainBuilder implements BaseRouteDto {
-    routeId: string;
-    agencyId: string;
-    routeCode: string;
-    routeShortName: string;
-    routeLongName: string;
-    routeDescription: string;
-    routeType: ERouteType;
-    routeUrl: string;
-    routeColor: string;
-    routeTextColor: string;
-    routeSortOrder: number;
+    routeId: string | undefined;
+    agencyId: string | undefined;
+    routeCode: string | null | undefined;
+    routeShortName: string | null | undefined;
+    routeLongName: string | null | undefined;
+    routeDescription: string | null | undefined;
+    routeType: ERouteType | undefined;
+    routeUrl: string | null | undefined;
+    routeColor: string | null | undefined;
+    routeTextColor: string | null | undefined;
+    routeSortOrder: number | null | undefined;
 
     constructor(dto: BaseRouteDto) {
         this.routeId = dto.routeId;
@@ -35,15 +35,15 @@ export class RouteDomainBuilder implements BaseRouteDto {
         return Route.create(
             {
                 agencyId: AgencyId.create(new UniqueEntityID(this.agencyId)),
-                routeCode: this.routeCode,
-                routeShortName: this.routeShortName,
-                routeLongName: this.routeLongName,
-                routeDescription: this.routeDescription,
-                routeType: this.routeType,
-                routeUrl: this.routeUrl,
-                routeColor: this.routeColor,
-                routeTextColor: this.routeTextColor,
-                routeSortOrder: this.routeSortOrder,
+                routeCode: this.routeCode ?? null,
+                routeShortName: this.routeShortName ?? null,
+                routeLongName: this.routeLongName ?? null,
+                routeDescription: this.routeDescription ?? null,
+                routeType: this.routeType ?? ERouteType.UNKNOWN,
+                routeUrl: this.routeUrl ?? null,
+                routeColor: this.routeColor ?? null,
+                routeTextColor: this.routeTextColor ?? null,
+                routeSortOrder: this.routeSortOrder ?? null,
             },
             new UniqueEntityID(this.routeId),
         );
