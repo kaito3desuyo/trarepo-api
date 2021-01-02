@@ -6,10 +6,10 @@ export class FindManyRouteQueryParam {
     @ApiProperty()
     @Type(() => Number)
     @IsInt()
-    page: number;
+    page!: number;
 
     @ApiProperty()
     @Type(() => Number)
     @IsInt()
-    per: number;
+    per!: number;
 }

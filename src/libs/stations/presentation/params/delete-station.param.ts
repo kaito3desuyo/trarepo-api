@@ -4,5 +4,5 @@ import { IsUUID } from 'class-validator';
 export class DeleteStationParam {
     @ApiProperty()
     @IsUUID()
-    stationId: string;
+    stationId!: string;
 }

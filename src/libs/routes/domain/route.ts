@@ -1,7 +1,11 @@
 import { AggregateRoot } from '@src/core/classes/aggregate-root';
 import { UniqueEntityID } from '@src/core/classes/unique-entity-id';
 import { RouteId } from './route-id';
-import { IRouteNotification, IRouteProps } from './route.interface';
+import {
+    IRouteNotification,
+    IRouteProps,
+    IRouteUpdateDetailsProps,
+} from './route.interface';
 
 export class Route extends AggregateRoot<IRouteProps> {
     private constructor(props: IRouteProps, id?: UniqueEntityID) {
@@ -15,6 +19,33 @@ export class Route extends AggregateRoot<IRouteProps> {
             },
             id,
         );
+    }
+
+    public updateDetails(props: IRouteUpdateDetailsProps): void {
+        if (props.routeCode !== undefined) {
+            this.props.routeCode = props.routeCode;
+        }
+        if (props.routeShortName !== undefined) {
+            this.props.routeShortName = props.routeShortName;
+        }
+        if (props.routeLongName !== undefined) {
+            this.props.routeLongName = props.routeLongName;
+        }
+        if (props.routeDescription !== undefined) {
+            this.props.routeDescription = props.routeDescription;
+        }
+        if (props.routeUrl !== undefined) {
+            this.props.routeUrl = props.routeUrl;
+        }
+        if (props.routeColor !== undefined) {
+            this.props.routeColor = props.routeColor;
+        }
+        if (props.routeTextColor !== undefined) {
+            this.props.routeTextColor = props.routeTextColor;
+        }
+        if (props.routeSortOrder !== undefined) {
+            this.props.routeSortOrder = props.routeSortOrder;
+        }
     }
 
     public notify(notifier: IRouteNotification): void {

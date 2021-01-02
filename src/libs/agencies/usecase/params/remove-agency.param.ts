@@ -4,5 +4,5 @@ import { IsUUID } from 'class-validator';
 export class RemoveAgencyParam {
     @ApiProperty()
     @IsUUID()
-    agencyId: string;
+    agencyId!: string;
 }

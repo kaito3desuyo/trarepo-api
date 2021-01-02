@@ -16,6 +16,20 @@ export interface IRouteProps {
     routeSortOrder: number | null;
 }
 
+export type IRouteUpdateDetailsProps = Partial<
+    Pick<
+        IRouteProps,
+        | 'routeCode'
+        | 'routeShortName'
+        | 'routeLongName'
+        | 'routeDescription'
+        | 'routeUrl'
+        | 'routeColor'
+        | 'routeTextColor'
+        | 'routeSortOrder'
+    >
+>;
+
 export interface IRouteNotification extends Required<IRouteProps> {
     routeId: RouteId;
 }

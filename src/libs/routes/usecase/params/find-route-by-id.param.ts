@@ -4,5 +4,5 @@ import { IsUUID } from 'class-validator';
 export class FindRouteByIdParam {
     @ApiProperty()
     @IsUUID()
-    routeId: string;
+    routeId!: string;
 }

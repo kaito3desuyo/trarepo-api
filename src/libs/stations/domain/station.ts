@@ -8,11 +8,11 @@ export class Station extends AggregateRoot<IStationProps> {
         super(props, id);
     }
 
-    static create(props: IStationProps, id?: UniqueEntityID) {
+    static create(props: IStationProps, id?: UniqueEntityID): Station {
         return new Station(props, id);
     }
 
-    public notify(notifier: IStationNotification) {
+    public notify(notifier: IStationNotification): void {
         notifier.stationId = StationId.create(this.id);
         notifier.stationName = this.props.stationName;
         notifier.stationSubName = this.props.stationSubName;

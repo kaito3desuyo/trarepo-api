@@ -5,11 +5,11 @@ import { BaseStationDto } from '../dtos/base-station.dto';
 export class StationDomainBuilder implements BaseStationDto {
     stationId: string;
     stationName: string;
-    stationSubName?: string;
+    stationSubName?: string | null;
     stationType: number;
-    stationDescription?: string;
-    stationLatLng?: string;
-    stationUrl?: string;
+    stationDescription?: string | null;
+    stationLatLng?: string | null;
+    stationUrl?: string | null;
 
     constructor(dto: BaseStationDto) {
         this.stationId = dto.stationId;
@@ -30,8 +30,8 @@ export class StationDomainBuilder implements BaseStationDto {
                 stationDescription: this.stationDescription ?? null,
                 stationLatLng: this.stationLatLng
                     ? {
-                          latitude: this.stationLatLng?.split(',')[0] ?? null,
-                          longitude: this.stationLatLng?.split(',')[1] ?? null,
+                          latitude: this.stationLatLng.split(',')[0],
+                          longitude: this.stationLatLng.split(',')[1],
                       }
                     : null,
                 stationUrl: this.stationUrl ?? null,

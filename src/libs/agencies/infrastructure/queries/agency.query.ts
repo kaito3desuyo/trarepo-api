@@ -37,7 +37,7 @@ export class AgencyQuery implements IAgencyQuery {
         return data;
     }
 
-    async findById(id: string): Promise<AgencyDetailsDto> {
+    async findById(id: string): Promise<AgencyDetailsDto | null> {
         const result = await this.repository.findOne({
             where: {
                 id,

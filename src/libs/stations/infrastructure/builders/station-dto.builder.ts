@@ -4,11 +4,11 @@ import { StationDetailsDto } from '../../usecase/dtos/station-details.dto';
 export class StationDtoBuilder implements StationModel {
     id: string;
     stationName: string;
-    stationSubName?: string;
+    stationSubName: string | null;
     stationType: number;
-    stationDescription?: string;
-    stationLatLng?: { type: string; coordinates: string[] };
-    stationUrl?: string;
+    stationDescription: string | null;
+    stationLatLng: { type: string; coordinates: string[] } | null;
+    stationUrl: string | null;
     createdAt: Date;
     updatedAt: Date;
 

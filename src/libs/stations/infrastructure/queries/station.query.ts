@@ -18,7 +18,7 @@ export class StationQuery implements IStationQuery {
         return result.map((o) => new StationDtoBuilder(o).build());
     }
 
-    async findOne(id: string): Promise<StationDetailsDto> {
+    async findOne(id: string): Promise<StationDetailsDto | null> {
         const result = await this.repository.findOne(id);
 
         if (!result) {

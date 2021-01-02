@@ -1,7 +1,6 @@
 import { AgencyId } from './agency-id';
 
 export interface IAgencyProps {
-    // agencyId: AgencyId;
     agencyNumber: string;
     agencyOfficialName: string;
     agencyName: string;
@@ -10,12 +9,6 @@ export interface IAgencyProps {
     agencyFareUrl: string;
 }
 
-export interface IAgencyNotification {
+export interface IAgencyNotification extends IAgencyProps {
     agencyId: AgencyId;
-    agencyNumber: string;
-    agencyOfficialName: string;
-    agencyName: string;
-    agencyPhone: string;
-    agencyUrl: string;
-    agencyFareUrl: string;
 }

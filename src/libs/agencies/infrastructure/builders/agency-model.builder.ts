@@ -3,13 +3,13 @@ import { AgencyModel } from '../models/agency.model';
 import { IAgencyNotification } from '../../domain/agency.interface';
 
 export class AgencyModelBuilder implements IAgencyNotification {
-    private _agencyId: AgencyId;
-    private _agencyNumber: string;
-    private _agencyOfficialName: string;
-    private _agencyName: string;
-    private _agencyPhone: string;
-    private _agencyUrl: string;
-    private _agencyFareUrl: string;
+    private _agencyId!: AgencyId;
+    private _agencyNumber!: string;
+    private _agencyOfficialName!: string;
+    private _agencyName!: string;
+    private _agencyPhone!: string;
+    private _agencyUrl!: string;
+    private _agencyFareUrl!: string;
 
     set agencyId(agencyId: AgencyId) {
         this._agencyId = agencyId;

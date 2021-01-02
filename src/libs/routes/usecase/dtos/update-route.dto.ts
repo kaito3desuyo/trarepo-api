@@ -1,50 +1,51 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
+import { Exclude } from 'class-transformer';
 import { IsOptional, IsUUID } from 'class-validator';
 import { ERouteType } from '../../domain/route-type.enum';
 import { ValidatableRouteDto } from './validatable-route.dto';
 
 export class UpdateRouteDto extends ValidatableRouteDto {
-    @ApiPropertyOptional()
     @IsOptional()
+    @Exclude()
     routeId?: string;
 
-    @ApiPropertyOptional()
-    @IsUUID()
+    @IsOptional()
+    @Exclude()
     agencyId?: string;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
     routeCode?: string | null;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
     routeShortName?: string | null;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
     routeLongName?: string | null;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
     routeDescription?: string | null;
 
-    @ApiPropertyOptional({ enum: ERouteType })
     @IsOptional()
+    @Exclude()
     routeType?: ERouteType;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
     routeUrl?: string | null;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
     routeColor?: string | null;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'string', nullable: true })
     @IsOptional()
     routeTextColor?: string | null;
 
-    @ApiPropertyOptional({ nullable: true })
+    @ApiPropertyOptional({ type: 'number', nullable: true })
     @IsOptional()
     routeSortOrder?: number | null;
 }

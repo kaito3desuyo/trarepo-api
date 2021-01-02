@@ -58,9 +58,9 @@ export class RouteService {
             throw new NotFoundException('Route not found.');
         }
 
-        const domain = new RouteDomainBuilder(
-            merge({}, cloneDeep(target), cloneDeep(dto)),
-        ).build();
+        const domain = new RouteDomainBuilder(target).build();
+        domain.updateDetails(new RouteDomainBuilder(dto).getProps());
+
         const result = await this.routeCommand.save(domain);
         return result[0];
     }

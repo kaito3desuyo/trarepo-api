@@ -7,5 +7,5 @@ export interface IRouteQuery {
     findMany(
         qo: FindManyRouteQueryObject,
     ): Promise<Pagination<RouteDetailsDto>>;
-    findById(id: string): Promise<RouteDetailsDto>;
+    findById(id: string): Promise<RouteDetailsDto | null>;
 }

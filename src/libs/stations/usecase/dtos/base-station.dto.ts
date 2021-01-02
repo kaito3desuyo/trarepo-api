@@ -1,9 +1,9 @@
 export class BaseStationDto {
     stationId!: string;
     stationName!: string;
-    stationSubName?: string;
+    stationSubName?: string | null;
     stationType!: number;
-    stationDescription?: string;
-    stationLatLng?: string;
-    stationUrl?: string;
+    stationDescription?: string | null;
+    stationLatLng?: string | null;
+    stationUrl?: string | null;
 }

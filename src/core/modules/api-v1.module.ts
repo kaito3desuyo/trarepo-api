@@ -27,7 +27,12 @@ const routes: Routes = [
 ];
 
 @Module({
-    imports: [RouterModule.forRoutes(routes), AgencyV1Module, StationV1Module],
+    imports: [
+        RouterModule.forRoutes(routes),
+        AgencyV1Module,
+        StationV1Module,
+        RouteV1Module,
+    ],
     exports: [RouterModule],
 })
 export class ApiV1Module {}

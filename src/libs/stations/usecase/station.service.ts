@@ -20,6 +20,11 @@ export class StationService {
 
     async findOne(id: string): Promise<StationDetailsDto> {
         const result = await this.stationQuery.findOne(id);
+
+        if (!result) {
+            throw new UnprocessableEntityException('Station not found.');
+        }
+
         return result;
     }
 

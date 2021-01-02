@@ -39,7 +39,7 @@ export class RouteQuery implements IRouteQuery {
         return data;
     }
 
-    async findById(id: string): Promise<RouteDetailsDto> {
+    async findById(id: string): Promise<RouteDetailsDto | null> {
         const result = await this.repository.findOne({
             where: {
                 id,

@@ -9,17 +9,17 @@ export class StationDetailsDto extends BaseStationDto {
     stationName!: string;
 
     @ApiProperty()
-    stationSubName!: string;
+    stationSubName!: string | null;
 
     @ApiProperty()
     stationType!: number;
 
     @ApiProperty()
-    stationDescription!: string;
+    stationDescription!: string | null;
 
     @ApiProperty()
-    stationLatLng!: string;
+    stationLatLng!: string | null;
 
     @ApiProperty()
-    stationUrl!: string;
+    stationUrl!: string | null;
 }
