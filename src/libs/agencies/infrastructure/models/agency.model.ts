@@ -13,7 +13,7 @@ import {
     name: 'agencies',
 })
 export class AgencyModel {
-    @PrimaryGeneratedColumn({ type: 'uuid' })
+    @PrimaryGeneratedColumn('uuid')
     id!: string;
 
     @Column({ type: 'varchar' })

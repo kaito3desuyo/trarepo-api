@@ -1,9 +1,11 @@
+import { RouteStationModel } from '@src/libs/routes/infrastructure/models/route-stations.model';
 import {
     Entity,
     PrimaryGeneratedColumn,
     Column,
     CreateDateColumn,
     UpdateDateColumn,
+    OneToMany,
 } from 'typeorm';
 
 @Entity({
@@ -47,4 +49,7 @@ export class StationModel {
 
     @UpdateDateColumn({ type: 'timestamptz', precision: 3 })
     updatedAt!: Date;
+
+    @OneToMany(() => RouteStationModel, (routeStation) => routeStation.station)
+    routeStations?: RouteStationModel[];
 }

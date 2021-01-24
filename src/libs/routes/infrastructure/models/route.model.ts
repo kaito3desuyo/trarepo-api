@@ -6,16 +6,18 @@ import {
     Entity,
     JoinColumn,
     ManyToOne,
+    OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
 } from 'typeorm';
 import { ERouteType } from '../../domain/route-type.enum';
+import { RouteStationModel } from './route-stations.model';
 
 @Entity({
     name: 'routes',
 })
 export class RouteModel {
-    @PrimaryGeneratedColumn({ type: 'uuid' })
+    @PrimaryGeneratedColumn('uuid')
     id!: string;
 
     @Column({ type: 'uuid' })
@@ -33,7 +35,7 @@ export class RouteModel {
     @Column({ type: 'text', nullable: true })
     routeDescription!: string | null;
 
-    @Column({ type: 'enum', enum: values(ERouteType) })
+    @Column({ type: 'int', enum: values(ERouteType) })
     routeType!: ERouteType;
 
     @Column({ type: 'varchar', nullable: true })
@@ -53,6 +55,9 @@ export class RouteModel {
 
     @UpdateDateColumn({ type: 'timestamptz', precision: 3 })
     updatedAt!: Date;
+
+    @OneToMany(() => RouteStationModel, (routeStation) => routeStation.route)
+    routeStations?: RouteStationModel[];
 
     @ManyToOne(() => AgencyModel, (agency) => agency.routes, {
         onUpdate: 'CASCADE',
