@@ -28,10 +28,10 @@ export class RouteStationModel {
     @Column({ type: 'int' })
     stationSequence!: number;
 
-    @CreateDateColumn({ type: 'timestamp', precision: 3 })
+    @CreateDateColumn({ type: 'timestamptz', precision: 3 })
     readonly createdAt?: Date;
 
-    @UpdateDateColumn({ type: 'timestamp', precision: 3 })
+    @UpdateDateColumn({ type: 'timestamptz', precision: 3 })
     readonly updatedAt?: Date;
 
     @ManyToOne(() => RouteModel, (route) => route.routeStations, {
