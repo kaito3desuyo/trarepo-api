@@ -25,4 +25,11 @@ async function bootstrap(): Promise<void> {
 
     await app.listen(3000);
 }
-bootstrap();
+bootstrap().then(
+    () => {
+        return;
+    },
+    () => {
+        return;
+    },
+);
